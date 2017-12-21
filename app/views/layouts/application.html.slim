@@ -1,0 +1,35 @@
+doctype html
+html class="brand-#{view_poll.slug}"
+  head
+    title
+      = view_poll.long_title
+
+    = render partial: 'partials/metatags'
+    = csrf_meta_tags
+
+    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag 'print', media: 'print'
+
+  body
+    = render partial: 'layouts/google_tag_manager'
+    .container
+      = render partial: 'layouts/header'
+      .row
+        - unless view_poll.slug == 'generic'
+          .subHeader
+            .subHeader_logo
+              / Checks if the partial exists based on the slug
+              - if lookup_context.exists?("logo_#{view_poll.slug}", ['partials/svg/poll'], true)
+                = render partial: "partials/svg/poll/logo_#{view_poll.slug}"
+              - if view_poll.long_title.present?
+                h1.visuallyhidden = view_poll.long_title
+        .col-main
+          - if content_for? :contentRail_header
+            = yield :contentRail_header
+          section.content
+            = yield
+      = render partial: 'layouts/footer'
+    #js-modal-shade.modalShade
+
+    = javascript_include_tag 'application'
+    = requirejs_include_tag 'app'

@@ -1,0 +1,50 @@
+// begin: print styles
+
+@media print {
+  // scss-lint:disable ImportantRule, IdSelector, SelectorFormat, QualifyingElement
+  #MPResponsiveHeaderBand {
+    display: none !important;
+  }
+
+  #fb-root {
+    display: none !important;
+  }
+
+  #MPResponsiveFooter {
+    display: none !important;
+  }
+
+  header.navRail .contentRail {
+    float: none !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+
+  // scss-lint:disable ChainedClasses
+  .contentRail.detail figure.square {
+    float: none;
+    width: 100% !important;
+  }
+
+  #printLogo {
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
+  a[href]:after {
+    content: '';
+  } //override foundation
+
+  abbr[title]:after {
+    content: '';
+  }
+
+  #printLogo {
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
+}
+
+// scss-lint:enable ImportantRule, IdSelector, SelectorFormat, QualifyingElement
+// end:  print styles

@@ -1,0 +1,19 @@
+header.header
+  .header_account
+    .hList.hList-sm
+      - if current_user.logged_in?
+        span Welcome, #{current_user.name}!
+        - if @poll
+          span
+            = link_to 'Log out', "/log_out?poll=#{@poll&.slug}", class: 'btn btn-sm'
+        - else
+          span
+            = link_to 'Log out', '/log_out', class: 'btn btn-sm'
+      - else
+        span
+          = link_to 'Log In', log_in_path, class: 'btn btn-sm'
+        span or
+        span
+          = link_to 'Sign Up', new_account_path, class: 'btn btn-sm'
+        span to vote
+    span.visuallyhidden Name Goes Here

@@ -1,0 +1,20 @@
+- title = content_for?(:title) ? yield(:title) : view_poll.long_title
+- description = content_for?(:description) ? yield(:description) : view_poll.description
+- og_image = content_for?(:og_image) ? yield(:og_image) : safe_image_url("og-#{view_poll.slug}.jpg")
+- twitter_image = content_for?(:twitter_image) ? yield(:twitter_image) : safe_image_url("twitter-#{view_poll.slug}.jpg")
+
+meta http-equiv="X-UA-Compatible" content="IE=edge"
+meta name="viewport" content="width=device-width, initial-scale=1"
+
+meta name="description" content="#{description}"
+meta property="og:url" content="#{request.original_url}"
+meta property="og:image" content="#{og_image}"
+meta property="og:description" content="#{description}"
+meta property="og:title" content="#{title}"
+meta property="og:site_name" content=""
+meta name="twitter:card" content="summary"
+meta name="twitter:site" content="@"
+meta name="twitter:url" content="#{request.original_url}"
+meta name="twitter:title" content="#{title}"
+meta name="twitter:description" content="#{description}"
+meta name="twitter:image" content="#{twitter_image}"

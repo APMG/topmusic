@@ -1,0 +1,94 @@
+// scss-lint:disable VendorPrefix
+$no-media-queries: false !default;
+$max-legacy-width: 60em;
+
+@mixin media($query) {
+  @if $no-media-queries{
+    @if $query < $max-legacy-width {
+      @content;
+    }
+  } @else {
+    @media ('min-width:' + $query) {
+      @content;
+    }
+  }
+}
+
+@mixin invisible() {
+  // scss-lint:disable ImportantRule, DuplicateProperty
+  position: absolute !important;
+  height: 1px; width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// Max-width media queries
+// Will not output for legacy browsers
+@mixin media-max($query) {
+  @if $no-media-queries == false {
+    @media ('max-width:' + $query) {
+      @content;
+    }
+  }
+}
+
+@mixin box-shadow($size: 15px, $trans: .4) {
+  -moz-box-shadow: 0 0 $size rgba(0, 0, 0, $trans);
+  -webkit-box-shadow: 0 0 $size rgba(0, 0, 0, $trans);
+  box-shadow: 0 0 $size rgba(0, 0, 0, $trans);
+}
+
+@mixin rounded-corners($radius: 8px) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+}
+
+
+@mixin text-shadow() { text-shadow: $brown 1px 1px; } //for white text with brown shadow
+
+
+// Clearfix, self-clearing floats for containers
+// Nicholas Gallagher's micro clearfix: http://nicolasgallagher.com/micro-clearfix-hack/
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+// scss-lint:enable VendorPrefix
+
+// Blocks mixin
+@mixin blocks-layout($gutter, $sizes, $query:'', $label:'') {
+  @if $query != '' {
+    @include media($query) {
+      @each $size in $sizes {
+        $_width-without-gutters: 100% - ($gutter * $size);
+        $_block-width: $_width-without-gutters / $size;
+
+        .blocks-#{$label}-#{$size} {
+          > * {
+            width: $_block-width;
+          }
+        }
+      }
+    }
+  } @else {
+    @each $size in $sizes {
+      $_width-without-gutters: 100% - ($gutter * $size);
+      $_block-width: $_width-without-gutters / $size;
+
+      .blocks-#{$size} {
+        > * {
+          width: $_block-width;
+        }
+      }
+    }
+  }
+}

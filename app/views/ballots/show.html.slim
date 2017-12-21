@@ -1,0 +1,39 @@
+- provide :title, "#{@ballot.user_name}'s picks for #{@poll.name}"
+.row.row-section
+  .row.row-section
+    h1.hdg.hdg-1.hdg-center
+      = @ballot.user_name
+      | 's picks for
+      =< @poll.name
+  .callout
+    = render partial: 'partials/sharing', locals: {id: @ballot.public_uid}
+.row.row-section
+  ul.blocks.blocks-2.blocks-smallTablet-4.blocks-desktop-5
+    - @ballot.songs.each do |song|
+      li
+        .tile
+          - if song.has_art?
+            - art_url = image_url("/art/#{song.album_mbid}.jpg")
+          - else
+            - art_url = image_url('album-cover-default.png')
+          img.tile_img src="#{art_url}" alt="#{song.album}"
+          span.tile_caption
+            span.tile_caption_control
+            span.tile_caption_title = song.name
+            span.tile_caption_text = song.artist
+- if @ballot.selections.freeform.present?
+  .callout
+    .row.row-section
+      .row_header
+        h3.hdg Write-in songs
+      ol.numList
+        - @ballot.selections.freeform.each_with_index do |item, index|
+          li
+            .field =item.freeform
+
+- unless @poll.closed?
+  .toolbar
+    - if current_user.uid == @ballot.user_id
+      = link_to 'Edit your ballot', edit_poll_ballot_path(@poll, @ballot), class: 'btn'
+    - else
+      = link_to 'Make your own ballot', new_poll_ballot_path(@poll), class: 'btn btn-lg'

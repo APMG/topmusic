@@ -1,0 +1,11 @@
+inherit_from: https://gitlab.mpr.org/swag-utils/rubocop-defaults/raw/master/apm-defaults.yml
+
+Rails:
+  Enabled: true
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - 'lib/tasks/**/*'
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'spec/models/**/*'

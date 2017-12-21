@@ -1,0 +1,12 @@
+.callout
+  p.p
+    ' Make your voice heard: Vote!
+  ol.numList
+    - unless current_user.logged_in?
+      li
+        => link_to 'Create an account', new_account_path, class: 'link'
+        | for The Current. (
+        a.link href="#" target="_blank" Why?
+        | )
+    li Vote for your 10 favorite songs.
+    li Share your ballot with your friends.

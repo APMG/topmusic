@@ -1,0 +1,92 @@
+//--------------------------------------------------
+// Top 89 - 2016, 2017 branding
+//--------------------------------------------------
+
+$t16-color-dark: #33315f;
+$t16-color-light: #713246;
+$t16-color-bright: #55aaaa;
+
+.brand-top89-2016,
+.brand-top89-prince-2017 {
+  background: #3a3341;
+  background-image: -moz-linear-gradient(left, #3a1e1f -30%, #3a4865 130%);
+  background-image: -webkit-linear-gradient(left, #3a1e1f -30%, #3a4865 130%);
+  background-image: linear-gradient(to right, #3a1e1f -30%, #3a4865 130%);
+  background-size: auto;
+  background-position: 0 0;
+
+  // scss-lint:disable NestingDepth
+
+  .header_logo {
+    svg {
+      fill: $color-white;
+    }
+  }
+
+  .header_account {
+    color: $color-white;
+
+    .btn {
+      background-color: $t16-color-light;
+    }
+  }
+
+  .subHeader {
+    // scss-lint:disable VendorPrefix DuplicateProperty
+    border: 12px solid rgba($color-black, .4);
+    background: #563f72;
+    background-image: image-url('bg-logo-top89-2016.png'), -moz-linear-gradient(-45deg, #a4383d -30%, #1a459b 130%);
+    background-image: image-url('bg-logo-top89-2016.png'), -webkit-linear-gradient(-45deg, #a4383d -30%, #1a459b 130%);
+    background-image: image-url('bg-logo-top89-2016.png'), linear-gradient(135deg, #a4383d -30%, #1a459b 130%);
+    background-size: 63px 108.5px, auto;
+    background-position: center -32px, 0 0;
+  }
+
+  .btn {
+    background-color: $t16-color-dark;
+
+    &:hover {
+      background-color: $t16-color-bright;
+    }
+
+    &:focus {
+      border-color: lighten($t16-color-bright, 20%);
+    }
+
+    &[disabled] {
+      background: desaturate(lighten($t16-color-dark, 40%), 50%);
+    }
+  }
+
+  .link {
+    &:hover,
+    &:focus {
+      outline: 0;
+      color: $t16-color-bright;
+    }
+  }
+
+  .modal_close {
+    &:focus {
+      svg {
+        stroke: $t16-color-bright;
+      }
+    }
+  }
+
+  .field:focus {
+    border-color: $t16-color-bright;
+  }
+
+  :checked + .tile {
+    background-color: $t16-color-bright;
+  }
+
+  :checked:focus + .tile {
+    outline: 2px solid lighten($t16-color-bright, 20%);
+  }
+
+  .footer {
+    color: $color-white;
+  }
+}

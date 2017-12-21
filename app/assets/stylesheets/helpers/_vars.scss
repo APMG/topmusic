@@ -1,0 +1,38 @@
+// Media Queries
+$media-mobile: 20em;
+$media-small-tablet: 32em;
+$media-tablet: 48em;
+$media-desktop: 64em;
+$media-wide: 75em;
+
+// Colors
+$color-red: #b70005;
+$color-text: #222222;
+$color-lighter-grey: #f8f8f8;
+$color-light-grey: #e5e5e5;
+$color-med-grey: #cccccc;
+$color-dark-grey: #565656;
+$color-darker-grey: #4a4a4a;
+$color-brown: #634a1b;
+$color-white: #ffffff;
+$color-black: #000000;
+$color-green: #7fae00;
+
+$bg-color:#b8a578;
+$color-default: $color-text;
+$color-selection:$color-red;
+
+
+// Font Families
+// scss-lint:disable NameFormat
+$franklinBook: 'ITCFranklinGothicW01-Bk 812647', sans-serif;
+$franklinMedium: 'ITCFranklinGothicW01-Md 812695', sans-serif;
+$franklinCondensedDemi: 'ITCFranklinGothicW01-Dm 812677', sans-serif;
+$franklinCompressedDemi: 'ITCFranklinGothicW01-Dm 812671', sans-serif;
+
+// Font Sizes
+$font-size-root: 16px; // Root size, only for html tag.
+$font-family-default: "ITCFranklinGothicW01-Bk 812647", sans-serif;
+$font-family-heading: $franklinCondensedDemi;
+
+$font-size-default: $font-size-root;

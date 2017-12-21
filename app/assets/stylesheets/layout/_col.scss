@@ -1,0 +1,15 @@
+//--------------------------------------------------
+// Columns
+//--------------------------------------------------
+
+.col-main {
+  width: 100%;
+  padding: 2.5rem 1rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, .4);
+  float: left;
+  background: $color-lighter-grey;
+
+  @include media($media-tablet) {
+    padding: 2.5rem;
+  }
+}

@@ -1,0 +1,6 @@
+.row.row-section
+  h1.hdg.hdg-1 All Polls
+  ul.vList
+    - @polls.each do |poll|
+      li
+        a.link href="/polls/#{poll.slug}" = poll.name

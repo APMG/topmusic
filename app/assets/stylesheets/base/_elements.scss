@@ -1,0 +1,120 @@
+html {
+  background: $bg-color image-url('background-site.jpg') repeat;
+  //background: $color-light-grey;
+  box-sizing: border-box;
+  font-size: $font-size-root;
+  overflow-y: scroll;
+}
+
+// scss-lint:disable QualifyingElement, IdSelector, MergeableSelector
+html.no-svg .thecurrent-logo {
+}
+// scss-lint:enable QualifyingElement, IdSelector, MergeableSelector
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background: transparent;
+  color: $color-default;
+  direction: ltr;
+  font-family: $font-family-default;
+  font-size: $font-size-default;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+//overrides for hiDpi (retina) displays (desktop)
+// scss-lint:disable QualifyingElement, IdSelector, MergeableSelector
+@media only screen and (-o-min-device-pixel-ratio: 1.5),
+  only screen and (min--moz-device-pixel-ratio: 1.5),
+  only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  only screen and (min-device-pixel-ratio: 1.5) {
+
+  html {
+    background-size: 100px 100px;
+  }
+
+  html.no-svg .thecurrent-logo {
+  }
+
+  .content {
+    background-size: 140px 140px;
+  }
+
+}
+// scss-lint:enable QualifyingElement, IdSelector, MergeableSelector
+
+// Unstyle lists generally; lists are restyled in landmarks/content.scss
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  margin: 0;
+}
+
+p,
+.p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.p {
+  display: block;
+}
+
+q {
+  &:before,
+  &:after {
+    content: ''; // Removes automatic quotation marks
+  }
+}
+
+blockquote {
+  &:before,
+  &:after {
+    content: ''; // Removes automatic quotation marks
+  }
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+// Override normalize.css defaults
+input[type="search"] {
+  box-sizing: border-box; /* 2 */
+}

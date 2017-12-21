@@ -1,0 +1,14 @@
+modules:
+  - name: 'app'
+paths:
+  list: 'vendor/list'
+  'list.fuzzysearch': 'vendor/list.fuzzysearch'
+  'jquery.lazy': 'vendor/jquery.lazy'
+  'jquery.isonscreen': 'vendor/jquery.isonscreen'
+shim:
+  'jquery.lazy':
+    exports: 'lazy'
+    deps: ['jquery']
+  'jquery.isonscreen':
+    exports: 'isonscreen'
+    deps: ['jquery']

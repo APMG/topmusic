@@ -1,0 +1,22 @@
+//--------------------------------------------------
+// Subheader with poll branding
+//--------------------------------------------------
+
+.subHeader {
+  padding: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, .4);
+  text-align: center;
+}
+
+.subHeader_logo {
+  display: block;
+  margin: 0 auto;
+  height: 75px;
+  width: 254px;
+
+  svg {
+    display: block;
+    height: 75px;
+    width: 254px;
+  }
+}

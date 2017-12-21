@@ -1,0 +1,33 @@
+//--------------------------------------------------
+// Vertical Lists
+//--------------------------------------------------
+
+
+.vList {
+  > * {
+    display: block;
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.vList-condensed {
+  > * {
+    margin-bottom: 4px;
+  }
+}
+
+.vList-compressed {
+  > * {
+    margin-bottom: 1px;
+  }
+}
+
+.vList-collection {
+  > * {
+    margin-bottom: 30px;
+  }
+}

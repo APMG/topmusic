@@ -1,0 +1,71 @@
+//--------------------------------------------------
+// Tile
+//--------------------------------------------------
+
+.tileCheck {
+  @include invisible();
+}
+
+.tile {
+  display: block;
+  padding: .25rem;
+}
+
+.tile-select {
+  cursor: pointer;
+  background-color: $color-lighter-grey;
+  transition: background-color .15s, color .15s;
+  position: relative;
+
+  &:hover {
+    background-color: $color-light-grey;
+  }
+}
+
+:focus + .tile {
+  background-color: $color-light-grey;
+}
+
+:checked + .tile {
+  background-color: $color-red;
+  color: $color-white;
+}
+
+:checked:focus + .tile {
+  outline: 2px solid lighten($color-red, 30%);
+}
+
+.tile_img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 10;
+}
+
+// Dummy element to allow clicks on images inside labels in IE
+.tile_imgOverlay {
+  display: block;
+  width: 100%;
+  padding-bottom: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 11;
+}
+
+.tile_caption {
+  display: block;
+  margin-top: 5px;
+}
+
+.tile_caption_title {
+  display: block;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.tile_caption_text {
+  display: block;
+  font-size: .75rem;
+}

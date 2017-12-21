@@ -1,0 +1,10 @@
+.container {
+  margin: 0 auto;
+  max-width: 68rem;
+  padding: 1rem;
+
+  @include media($media-tablet) {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}

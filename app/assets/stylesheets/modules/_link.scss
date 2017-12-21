@@ -1,0 +1,10 @@
+.link {
+  text-decoration: underline;
+  transition: color .15s;
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    color: $color-red;
+  }
+}

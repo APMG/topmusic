@@ -1,0 +1,30 @@
+//--------------------------------------------------
+// Blocks layout
+//--------------------------------------------------
+
+$_blocks-gutter: 3.5%; // Needs to be a percentage
+$_blocks-vertical-gutter: 1.5rem;
+$_blocks-sizes: 1, 2, 4, 5, 6;
+
+.blocks {
+  margin-left: -$_blocks-gutter;
+  margin-bottom: -$_blocks-vertical-gutter;
+  font-size: 0; // Removes whitespace between blocks
+
+  > * {
+    width: 100% - $_blocks-gutter; // To fill space if there are no size rules applied
+    margin-left: $_blocks-gutter;
+    margin-bottom: $_blocks-vertical-gutter;
+    display: inline-block;
+    font-size: $font-size-default; // Reset font size
+    vertical-align: top;
+  }
+}
+
+@include blocks-layout($_blocks-gutter, $_blocks-sizes);
+
+@include blocks-layout($_blocks-gutter, $_blocks-sizes, $media-small-tablet, smallTablet);
+
+@include blocks-layout($_blocks-gutter, $_blocks-sizes, $media-tablet, tablet);
+
+@include blocks-layout($_blocks-gutter, $_blocks-sizes, $media-desktop, desktop);

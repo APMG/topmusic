@@ -1,0 +1,12 @@
+#modal-login.modal.js-modal style="display: none;" role="dialog"
+  button.modal_close.js-modal-close type="button"
+    .modal_close_label Cancel
+    = render partial: 'partials/svg/icon_close'
+  .modal_body
+    .row.row-section To vote, please log in or create an account.
+    .row
+      ul.hList
+        li
+          = link_to 'Log In', log_in_path, class: 'btn'
+        li
+          = link_to 'Sign Up', new_account_path, class: 'btn'

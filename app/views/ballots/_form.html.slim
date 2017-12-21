@@ -1,0 +1,83 @@
+.row.row-section
+  - if @poll.slug
+    / Checks if the partial exists based on the slug
+    - if lookup_context.exists?(@poll.slug, ['ballots/callouts'], true)
+      = render "ballots/callouts/#{@poll.slug}"
+
+- if @ballot.errors.full_messages.any?
+  - @ballot.errors.full_messages.each do |error_message|
+    = error_message
+    br
+
+= form_for [@poll, @ballot], html: {class: 'js-ballot', 'data-min': 0, 'data-max': 10} do |f|
+  = f.hidden_field :user_id
+  = f.hidden_field :poll_id
+  #js-filter.row.row-section
+    .row.row-section
+      .callout
+        .fieldGroup
+          span.field_overlay
+            = render partial: 'partials/svg/icon_search'
+          input.field.js-filter-search type="search" placeholder="Type to filter songs..."
+          span#js-filter-clear.field_clear style="display: none;"
+            = render partial: 'partials/svg/icon_close'
+        .hList.hList-sm
+          span.text-sm Sort by:
+          div
+            button.btn.btn-sm.js-filter-sort type="button" data-sort="js-filter-title" Song Title
+          div
+            button.btn.btn-sm.js-filter-sort type="button" data-sort="js-filter-artist" Artist
+          div
+            button.btn.btn-sm.js-filter-sort type="button" data-sort="js-filter-album" Album
+    ul.blocks.blocks-2.blocks-smallTablet-4.blocks-desktop-6.js-filter
+      = f.collection_check_boxes(:selectable_ids, @poll.selectables, :id, :name) do |builder|
+        li
+          = builder.check_box(class: 'tileCheck js-ballot-candidate')
+          - if current_user.logged_in?
+            - label_attr = {class: 'tile tile-select'}
+          - else
+            - label_attr = {class: 'tile tile-select', 'data-modal': 'modal-login'}
+          = builder.label(label_attr)
+            - if builder.object.has_art?
+              - art_url = image_url("/art/#{builder.object.album_mbid}.jpg")
+            - else
+              - art_url = image_url('')
+            img.tile_img.js-lazy src="#{image_path('empty.gif')}" data-src="#{art_url}" alt="#{builder.object.album}" height="200" width="200" style="background-color: #ccc;"
+            span.tile_imgOverlay
+            span.tile_caption
+              span.tile_caption_control
+              span.tile_caption_title.js-filter-title = builder.object.name
+              span.tile_caption_text.js-filter-artist = builder.object.artist
+              span.tile_caption_text.js-filter-album = builder.object.album
+  .callout
+    .row.row-section
+      .row_header
+        h3.hdg Write in up to four more songs
+      ol.numList
+        = f.fields_for :selections, @ballot.selections.reject { |selection| selection.freeform.nil? } do |builder|
+          li
+            = builder.hidden_field :id
+            label.visuallyhidden Write-in
+            - if current_user.logged_in?
+              - text_attr = {placeholder: 'Enter song name and artist', class: 'field'}
+            - else
+              - text_attr = {placeholder: 'Enter song name and artist', class: 'field', 'data-modal': 'modal-login'}
+            = builder.text_field :freeform, text_attr
+  .toolbar
+    - if current_user.logged_in?
+      .row.row-toolbar
+        ' You have picked
+        span.js-ballot-count> 0
+        ' of
+        span.js-ballot-max> 10
+        | songs
+      .row
+        = f.submit 'Submit your ballot', class: 'btn btn-lg js-ballot-submit'
+    - else
+      ul.hList
+        li
+          = link_to 'Log In', log_in_path, class: 'btn'
+        li
+          = link_to 'Sign Up', new_account_path, class: 'btn'
+
+= render partial: 'partials/modal_login'

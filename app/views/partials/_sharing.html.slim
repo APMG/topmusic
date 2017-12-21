@@ -1,0 +1,19 @@
+.row
+  .text-center.text-pad Share your ballot!
+  .hList.hList-sm.hList-center
+    iframe [
+      src="https://www.facebook.com/plugins/share_button.php?href=#{URI.encode poll_ballot_url(@poll, id)}&layout=button&size=small&mobile_iframe=true&width=59&height=20&appId"
+      width="59"
+      height="20"
+      style="border:none;overflow:hidden"
+      scrolling="no"
+      frameborder="0"
+      allowTransparency="true"]
+    a [
+      href="https://twitter.com/share"
+      class="twitter-share-button"
+      data-text = @poll.twitter_text
+      data-url = poll_ballot_url(@poll, id)
+      data-show-count="false"]
+      | Tweet
+      script async="async" src="//platform.twitter.com/widgets.js" charset="utf-8"
