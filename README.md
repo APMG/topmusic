@@ -1,5 +1,7 @@
 # Topmusic
 
+**PLEASE NOTE: This application is deprecated and no longer supported.**
+
 This application manages voting on songs for a top music poll.
 
 ## Set up
